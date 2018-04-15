@@ -112,7 +112,7 @@ let run =
   let fns =
     switch (Hashtbl.find(hotreloadData, screen)) {
     | exception Not_found => {
-      let hr = {
+      {
         started: false,
         filename: "",
         draw: unwrap(draw),
@@ -123,9 +123,7 @@ let run =
         mouseDragged: unwrap(mouseDragged),
         mouseDown: unwrap(mouseDown),
         mouseUp: unwrap(mouseUp)
-      };
-      Hashtbl.replace(hotreloadData, screen, hr);
-      hr
+      }
     }
     | hr =>
       hr.draw = unwrap(draw);
